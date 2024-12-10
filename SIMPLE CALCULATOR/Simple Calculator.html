@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<!-- saved from url=(0043)http://127.0.0.1:5501/ecom/day11/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Simple Calculator</title>
+      <style>
+        body {
+          font-family: Arial, sans-serif;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          margin: 0;
+          background-color: #f4f4f9;
+        }
+        .calculator {
+          background-color: #fff;
+          padding: 20px;
+          border-radius: 10px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          width: 260px;
+        }
+        input, button {
+          width: 50px;
+          height: 50px;
+          font-size: 20px;
+          margin: 5px;
+          cursor: pointer;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+        }
+        input {
+          width: 210px;
+          text-align: right;
+        }
+        button {
+          background-color: #f0f0f0;
+          transition: background-color 0.3s ease;
+        }
+        button:hover {
+          background-color: #e0e0e0;
+        }
+        .button-row {
+          display: flex;
+          justify-content: space-between;
+        }
+      </style>
+    </head>
+    <body cz-shortcut-listen="true">
+    
+      <div class="calculator">
+        <input type="text" id="display" disabled="">
+        
+        <div class="button-row">
+          <button onclick="appendToDisplay(&#39;7&#39;)">7</button>
+          <button onclick="appendToDisplay(&#39;8&#39;)">8</button>
+          <button onclick="appendToDisplay(&#39;9&#39;)">9</button>
+          <button onclick="appendToDisplay(&#39;/&#39;)">/</button>
+        </div>
+        <div class="button-row">
+          <button onclick="appendToDisplay(&#39;4&#39;)">4</button>
+          <button onclick="appendToDisplay(&#39;5&#39;)">5</button>
+          <button onclick="appendToDisplay(&#39;6&#39;)">6</button>
+          <button onclick="appendToDisplay(&#39;*&#39;)">*</button>
+        </div>
+        <div class="button-row">
+          <button onclick="appendToDisplay(&#39;1&#39;)">1</button>
+          <button onclick="appendToDisplay(&#39;2&#39;)">2</button>
+          <button onclick="appendToDisplay(&#39;3&#39;)">3</button>
+          <button onclick="appendToDisplay(&#39;-&#39;)">-</button>
+        </div>
+        <div class="button-row">
+          <button onclick="appendToDisplay(&#39;0&#39;)">0</button>
+          <button onclick="appendToDisplay(&#39;.&#39;)">.</button>
+          <button onclick="calculateResult()">=</button>
+          <button onclick="appendToDisplay(&#39;+&#39;)">+</button>
+        </div>
+        <div class="button-row">
+          <button onclick="clearDisplay()">C</button>
+        </div>
+      </div>
+    
+      <script>
+        function appendToDisplay(value) {
+          document.getElementById("display").value += value;
+        }
+    
+        function clearDisplay() {
+          document.getElementById("display").value = '';
+        }
+    
+        function calculateResult() {
+          const display = document.getElementById("display");
+          try {
+            display.value = eval(display.value);
+          } catch (e) {
+            display.value = 'Error';
+          }
+        }
+      </script>
+    
+    <!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+    
+      
+
+
+
+
+
+    
+</body></html>
